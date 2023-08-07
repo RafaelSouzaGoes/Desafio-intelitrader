@@ -15,31 +15,62 @@ namespace Desafio_02
             /*
              * Crie uma aplicação capaz de realizar multiplicação de 
              * números com mais de 22 caracteres (bigInt)
-             * 
              * */
+            Console.WriteLine("Bem vindo a calculadora de multiplicação de numeros grandes!");
+            bool continueCalculing = true;
 
-            Console.WriteLine("Digite o primeiro número:");
-            string input1 = Console.ReadLine();
+            // Loop para permitir múltiplas operações
 
-            Console.WriteLine("Digite o segundo número:");
-            string input2 = Console.ReadLine();
-
-            if (BigInteger.TryParse(input1, out BigInteger num1) &&
-                BigInteger.TryParse(input2, out BigInteger num2))
+            while (continueCalculing)
             {
 
-                BigInteger result = Multiplication(num1, num2);
+                try
+                {
 
-                Console.WriteLine($"Resultado {result}");
-            }
-            else
-            {
-                Console.WriteLine("Entrada Invalida");
+                    Console.WriteLine("Digite o primeiro número:");
+                    string input1 = Console.ReadLine();
+
+                    Console.WriteLine("Digite o segundo número:");
+                    string input2 = Console.ReadLine();
+
+                    // Verificar se os números são válidos usando BigInteger.TryParse
+                    if (BigInteger.TryParse(input1, out BigInteger num1) &&
+                        BigInteger.TryParse(input2, out BigInteger num2))
+                    {
+
+                        BigInteger result = Multiplication(num1, num2);
+
+                        Console.WriteLine($"Resultado: {result}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Entrada Invalida");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine($"Ocorreu o erro: '{ex.Message}'");
+                }
+
+                Console.WriteLine("======================================================================================================");
+                Console.WriteLine();
+                Console.WriteLine("Deseja realizar outra multiplicação? (S / N)");
+                string resposta = Console.ReadLine();
+                continueCalculing = (resposta.ToLower() == "s");
+
+
             }
 
+            Console.WriteLine("======================================================================================================");
+            Console.WriteLine("Finalizando Programa!");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Console.WriteLine("Obrigado! Até logo!");
+            Console.WriteLine("======================================================================================================");
 
         }
 
+        // Método para realizar a multiplicação de BigIntegers
         static BigInteger Multiplication(BigInteger a, BigInteger b)
         {
 

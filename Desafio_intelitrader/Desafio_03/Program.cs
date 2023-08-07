@@ -17,36 +17,86 @@ namespace Desafio_03
              * 
              */
 
-            Console.WriteLine("Seja bem vindo ao aplicativo!!");
+            Console.WriteLine("Bem-vindo ao Analisador de Caracteres!!");
             Console.WriteLine("Informe os dados a serem processados!!");
 
 
-            Console.WriteLine("Insira o caminho do primeiro arquivo");
-            string arquivo = Console.ReadLine();
 
-            string texto = File.ReadAllText(arquivo).ToLower();
+            do
+            {
 
-            Dictionary<char, int> contagem = new Dictionary<char, int>();
+                // Solicita ao usuário o caminho do arquivo de texto a
+                // ser analisado
+
+                Console.WriteLine("Insira o caminho do primeiro arquivo");
+                string arquivo = Console.ReadLine();
+
+
+                try
+                {
+                    string texto = File.ReadAllText(arquivo).ToLower();
+                    Dictionary<char, int> contagem = CountCharacter(texto);
+                    PrintCharacterRanking(contagem);
+                }
+                catch (FileNotFoundException)
+                {
+
+                    Console.WriteLine("Arquivo não encontrado.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Ocorreu um error: '{ex.Message}'");
+                }
+
+
+
+                Console.WriteLine("======================================================================================================");
+                Console.WriteLine();
+                Console.WriteLine("Deseja fazer uma nova análise? (S / N)");
+
+            } while (Console.ReadLine().ToLower() == "s");
+
+            Console.WriteLine("======================================================================================================");
+            Console.WriteLine("Finalizando Programa!");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            Console.WriteLine("Obrigado! Até logo!");
+            Console.WriteLine("======================================================================================================");
+
+        }
+
+        // Função que conta a ocorrência de cada caractere no texto
+
+        private static Dictionary<char, int> CountCharacter(string texto)
+        {
+            Dictionary<char, int> charCount = new Dictionary<char, int>();
 
             foreach (char c in texto)
             {
-                if (contagem.ContainsKey(c)) contagem[c]++;
+                if (c == '\n' || c == '\r') // Ignorar quebras de linha e retornos de carro
+                    continue;
 
-                else contagem[c] = 1;
+                if (charCount.ContainsKey(c))
+                    charCount[c]++;
+
+                else charCount[c] = 1;
             }
+            return charCount;
 
-            var ordemDecresente = contagem.OrderByDescending(x => x.Value).ToList();
+        }
 
-            Console.WriteLine("\nRanking de caracteres:");
+        // Função que imprime o ranking de caracteres com base na quantidade de ocorrências
 
-            foreach (var entry in ordemDecresente)
+        private static void PrintCharacterRanking(Dictionary<char, int> contagem)
+        {
+
+            var sortedCharCount = contagem.OrderByDescending(x => x.Value);
+            Console.WriteLine("\nRanking de caractere:");
+
+            foreach (var c in sortedCharCount)
             {
-                Console.WriteLine($"Caractere '{entry.Key}': {entry.Value} ocorrencias");
+                Console.WriteLine($"Caractere '{c.Key}': '{c.Value}' Repetições");
             }
 
         }
-       
-        
-       
     }
 }
