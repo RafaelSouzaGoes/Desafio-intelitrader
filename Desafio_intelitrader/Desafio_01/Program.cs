@@ -34,11 +34,11 @@ namespace Desafio_01
                 Console.WriteLine("\n======================================================================================================");
 
                 Console.WriteLine("Insira o caminho do primeiro arquivo");
-                string arquivo1 = Console.ReadLine();
+                string arquivo1 = Console.ReadLine().Trim('"');
                 Console.WriteLine("======================================================================================================");
 
                 Console.WriteLine("Insira o caminho do Segundo arquivo");
-                string arquivo2 = Console.ReadLine();
+                string arquivo2 = Console.ReadLine().Trim('"');
                 Console.WriteLine("======================================================================================================");
 
                 List<string> ListaArquivo1 = LerArquivo(arquivo1);

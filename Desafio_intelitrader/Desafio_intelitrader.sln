@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio_03", "Desafio_03\De
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio_04", "Desafio_04\Desafio_04.csproj", "{3E62B3C9-12E7-40D4-B544-EB2D12F8A65C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio_05", "Desafio_05\Desafio_05.csproj", "{57B7B83C-FB17-499B-B217-84CC9008706C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Desafio_05", "Desafio_05\Desafio_05.csproj", "{57B7B83C-FB17-499B-B217-84CC9008706C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

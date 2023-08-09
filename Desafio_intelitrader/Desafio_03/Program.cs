@@ -29,7 +29,7 @@ namespace Desafio_03
                 // ser analisado
 
                 Console.WriteLine("Insira o caminho do primeiro arquivo");
-                string arquivo = Console.ReadLine();
+                string arquivo = Console.ReadLine().Trim('"');
 
 
                 try
@@ -72,7 +72,7 @@ namespace Desafio_03
 
             foreach (char c in texto)
             {
-                if (c == '\n' || c == '\r') // Ignorar quebras de linha e retornos de carro
+                if (c == '\n' || c == '\r') // Ignorar quebras de linha e retornos
                     continue;
 
                 if (charCount.ContainsKey(c))

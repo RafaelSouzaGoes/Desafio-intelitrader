@@ -70,7 +70,7 @@ namespace Desafio_04
             {
 
                 Console.WriteLine("Insira o caminho do arquivo");
-                string arquivo = Console.ReadLine();
+                string arquivo = Console.ReadLine().Trim('"');
 
                 if (!File.Exists(arquivo))
                 {
@@ -108,7 +108,7 @@ namespace Desafio_04
         static void DescodificarArquivo()
         {
             Console.WriteLine("Insira o caminho do arquivo");
-            string arquivo = Console.ReadLine();
+            string arquivo = Console.ReadLine().Trim('"');
 
             if (!File.Exists(arquivo))
             {
